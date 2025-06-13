@@ -11,16 +11,7 @@ The test setup includes:
 
 ## 📊 Metrics Collected\n\n- **Bundle Size** (using `@next/bundle-analyzer`)
 - **Build Time** (100 build runs using Node script)
-
-## 📷 Visual Results
-
-Visualizations of the results can be found in the [`/post_images/barrel-files`](./post_images/barrel-files) directory:
-
-- `direct_import.png` and `barrel_import.png`: Bundle size comparisons
-- `build_time.png`: Probability density function comparing build times
-- `circular_direct.png` and `circular_barrel.png`: Impact of circular imports on bundle size
-- `dependency_diagram.png`: Diagram illustrating circular import risks
-
+- 
 ## 📈 Key Findings
 
 - Barrel files increase bundle size when unused exports are bundled
