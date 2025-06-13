@@ -12,8 +12,9 @@ The test setup includes:
 - **Barrel Import**: All 10 components are re-exported via `index.ts`, but only one is imported
 
 ## 📊 Metrics Collected\n\n- **Bundle Size** (using `@next/bundle-analyzer`)
+- **Bundle Size** (using `@next/bundle-analyzer`)
 - **Build Time** (100 build runs using Node script)
-- 
+  
 ## 📈 Key Findings
 
 - Barrel files increase bundle size when unused exports are bundled
