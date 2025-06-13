@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+📦 Barrel File Performance Test
+This repository contains a sample React/Next.js project used to measure the bundle size and build time impact of using barrel files (index.ts) versus direct imports.
 
-## Getting Started
+🧪 Project Structure
+The test setup includes:
 
-First, run the development server:
+components/ folder with 10 dummy component files
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Two variations:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Direct Import: Only one component is imported directly
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Barrel Import: All 10 components are re-exported via index.ts, but only one is imported
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+📊 Metrics Collected
+Bundle Size (using @next/bundle-analyzer)
 
-## Learn More
+Build Time (100 build runs using Node script)
 
-To learn more about Next.js, take a look at the following resources:
+📷 Visual Results
+Visualizations of the results can be found in the /post_images/barrel-files directory:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+direct_import.png and barrel_import.png: Bundle size comparisons
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+build_time.png: Probability density function comparing build times
 
-## Deploy on Vercel
+circular_direct.png and circular_barrel.png: Impact of circular imports on bundle size
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+dependency_diagram.png: Diagram illustrating circular import risks
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+📈 Key Findings
+Barrel files increase bundle size when unused exports are bundled
+
+Minor but measurable increase in build time (~80ms on average)
+
+Circular imports significantly bloat bundle size (~53% increase)
+
+Next.js’s optimizePackageImports can help mitigate barrel drawbacks
+
+🔧 How to Run
+Install dependencies:
+
+bash
+Copy
+Edit
+npm install
+Analyze bundle:
+
+bash
+Copy
+Edit
+ANALYZE=true npm run build
+Run build time test:
+
+bash
+Copy
+Edit
+node measureBuildTime.js
+Ensure no other major processes are running to avoid skewing build time results.
+
+📁 File Overview
+File / Folder	Description
+/components	Dummy components and optional index.ts
+/scripts/measureBuildTime.js	Node script for benchmarking build times
+/next.config.js	Next.js config with optional analyzer setup
+/post_images/	Screenshots of build and bundle results
+
+✅ Conclusion
+Barrel files can clean up your imports and simplify large projects, but they come with performance tradeoffs. This repo serves as a reproducible testbed for measuring those tradeoffs in a real Next.js environment.
