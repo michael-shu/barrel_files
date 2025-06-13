@@ -39,7 +39,7 @@ ANALYZE=true npm run build
 Run build time test:
 
 ```bash
-node measureBuildTime.js
+npm run analyze
 ```
 
 > Ensure no other major processes are running to avoid skewing build time results.
