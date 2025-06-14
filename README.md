@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📦 Barrel File Performance Test
 
-## Getting Started
+This repository contains a sample React/Next.js project used to measure the **bundle size** and **build time** impact of using [barrel files](https://basarat.gitbook.io/typescript/main-1/barrel) (`index.ts`) versus direct imports.
 
-First, run the development server:
+## 🧪 Project Structure
+
+The test setup includes:
+
+- `components/` folder with 10 dummy component files
+- - Two variations:
+- **Direct Import**: Only one component is imported directly
+- **Barrel Import**: All 10 components are re-exported via `index.ts`, but only one is imported
+
+## 📊 Metrics Collected\n\n- **Bundle Size** (using `@next/bundle-analyzer`)
+- **Bundle Size** (using `@next/bundle-analyzer`)
+- **Build Time** (100 build runs using Node script)
+  
+## 📈 Key Findings
+
+- Barrel files increase bundle size when unused exports are bundled
+- Minor but measurable increase in build time (~80ms on average)
+- Circular imports significantly bloat bundle size (~53% increase)
+- Next.js’s [`optimizePackageImports`](https://vercel.com/blog/how-we-optimized-package-imports-in-next-js#measuring-performance-improvements) can help mitigate barrel drawbacks
+
+## 🔧 How to Run
+
+Install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Analyze bundle:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+ANALYZE=true npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Run build time test:
 
-## Learn More
+```bash
+npm run analyze
+```
 
-To learn more about Next.js, take a look at the following resources:
+> Ensure no other major processes are running to avoid skewing build time results.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 File Overview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| File / Folder            | Description                                 |
+|--------------------------|---------------------------------------------|
+| `/components`            | Dummy components and optional `index.ts`    |
+| `/scripts/measureBuildTime.js` | Node script for benchmarking build times |
+| `/next.config.js`        | Next.js config with optional analyzer setup |
+| `/post_images/`          | Screenshots of build and bundle results     |
 
-## Deploy on Vercel
+## ✅ Conclusion
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Barrel files can clean up your imports and simplify large projects, but they come with performance tradeoffs. This repo serves as a reproducible testbed for measuring those tradeoffs in a real Next.js environment.
