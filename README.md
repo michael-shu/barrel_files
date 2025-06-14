@@ -7,7 +7,7 @@ This repository contains a sample React/Next.js project used to measure the **bu
 The test setup includes:
 
 - `components/` folder with 10 dummy component files
-- Two variations:
+  Two variations:
 -   **Direct Import**: Only one component is imported directly
 -   **Barrel Import**: All 10 components are re-exported via `index.ts`, but only one is imported
 
