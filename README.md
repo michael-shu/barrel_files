@@ -35,14 +35,15 @@ Analyze bundle:
 ```bash
 npm run analyze
 ```
+> Make sure you change the imports directly in app/page.tsx, in order to update it as direct or barrel import
 
 Run build time test:
 
 ```bash
 npm run time-analyze
 ```
-
-> Ensure no other major processes are running to avoid skewing build time results.
+> Change the 3rd argument in time-analyze to change the output file name
+> Ensure no other major processes are running to avoid skewing build time results
 
 ## 📁 File Overview
 
