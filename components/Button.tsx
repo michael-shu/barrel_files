@@ -2,7 +2,7 @@
 import React from 'react'
 
 const Button = () => {
-  console.log("This is image carousel");
+  console.log("This is button");
   return (
     <div>
       <button>Button</button>
