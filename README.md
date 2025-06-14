@@ -7,11 +7,12 @@ This repository contains a sample React/Next.js project used to measure the **bu
 The test setup includes:
 
 - `components/` folder with 10 dummy component files
-  Two variations:
+
 -   **Direct Import**: Only one component is imported directly
 -   **Barrel Import**: All 10 components are re-exported via `index.ts`, but only one is imported
 
-## 📊 Metrics Collected\n\n- **Bundle Size** (using `@next/bundle-analyzer`)
+## 📊 Metrics Collected
+
 - **Bundle Size** (using `@next/bundle-analyzer`)
 - **Build Time** (100 build runs using Node script)
   
