@@ -33,13 +33,13 @@ npm install
 Analyze bundle:
 
 ```bash
-ANALYZE=true npm run build
+npm run analyze
 ```
 
 Run build time test:
 
 ```bash
-npm run analyze
+npm run time-analyze
 ```
 
 > Ensure no other major processes are running to avoid skewing build time results.
