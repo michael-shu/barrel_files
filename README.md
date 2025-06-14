@@ -8,8 +8,8 @@ The test setup includes:
 
 - `components/` folder with 10 dummy component files
 - Two variations:
-- **Direct Import**: Only one component is imported directly
-- **Barrel Import**: All 10 components are re-exported via `index.ts`, but only one is imported
+-   **Direct Import**: Only one component is imported directly
+-   **Barrel Import**: All 10 components are re-exported via `index.ts`, but only one is imported
 
 ## 📊 Metrics Collected\n\n- **Bundle Size** (using `@next/bundle-analyzer`)
 - **Bundle Size** (using `@next/bundle-analyzer`)
