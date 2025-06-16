@@ -1,6 +1,6 @@
 # 📦 Barrel File Performance Test
 
-This repository contains a sample React/Next.js project used to measure the **bundle size** and **build time** impact of using [barrel files](https://basarat.gitbook.io/typescript/main-1/barrel) (`index.ts`) versus direct imports.
+This repository contains a sample React/Next.js project used to measure the **bundle size** and **build time** impact of using [barrel files](https://blog-seven-rust-13.vercel.app/barrel-files) (`index.ts`) versus direct imports.
 
 ## 🧪 Project Structure
 
@@ -50,9 +50,7 @@ npm run time-analyze
 | File / Folder            | Description                                 |
 |--------------------------|---------------------------------------------|
 | `/components`            | Dummy components and optional `index.ts`    |
-| `/scripts/measureBuildTime.js` | Node script for benchmarking build times |
-| `/next.config.js`        | Next.js config with optional analyzer setup |
-| `/post_images/`          | Screenshots of build and bundle results     |
+| `/scripts/analyze-time.js` | Node script for benchmarking build times |
 
 ## ✅ Conclusion
 
