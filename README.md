@@ -43,8 +43,7 @@ Run build time test:
 ```bash
 npm run time-analyze
 ```
-> Change the 3rd argument in time-analyze to change the output file name
-> Ensure no other major processes are running to avoid skewing build time results
+> Change the 3rd argument in time-analyze to change the output file name, and ensure no other major processes are running to avoid skewing build time results
 
 ## 📁 File Overview
 
